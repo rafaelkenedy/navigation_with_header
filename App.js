@@ -12,29 +12,39 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Header from './src/components/Header'
 
 const Screen1 = () => {
-  const { navigate } = useNavigation()
+  const { navigate, goBack } = useNavigation()
 
   return (
     <>
-      <Header />
+      <Header
+        onBackPress={() =>
+          console.log("não é possível voltar")
+        }
+        title="Primeira tela"
+        onNextPress={() =>
+          navigate('Screen2')
+        }
+      />
       <View
         style={[
           styles.container,
           { justifyContent: 'center', alignItems: 'center' }
         ]}>
         <Text>Screen 1</Text>
-        <TouchableOpacity onPress={() => navigate('Screen2')}>
-          <Text>Next page</Text>
-        </TouchableOpacity>
+
       </View>
     </>
   )
 }
 
 const Screen2 = () => {
+  const { navigate, goBack } = useNavigation()
   return (
     <>
-      <Header />
+      <Header
+        onBackPress={() => goBack()}
+        title="Segunda tela"
+      />
       <View
         style={{
           flex: 1,

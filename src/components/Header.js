@@ -2,19 +2,21 @@ import React from 'react'
 import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-const Header = () => {
-    const {goBack} = useNavigation()
-
+const Header = ({ showBackButton = true, title, onBackPress, onNextPress }) => {
+    
     return (
         <>
             <SafeAreaView style={styles.safeAreaView} />
             <View style={styles.container}>
                 <TouchableOpacity
                     style={styles.buttons}
-                    onPress={() => goBack()}
+                    onPress={onBackPress}
                 />
-                <Text style={styles.title}> Header </Text>
-                <TouchableOpacity style={styles.buttons} />
+                <Text style={styles.title}> {title} </Text>
+                <TouchableOpacity 
+                    style={styles.buttons} 
+                    onPress={onNextPress}
+                />
             </View>
         </>
     )
