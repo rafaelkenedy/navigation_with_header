@@ -1,50 +1,43 @@
 import React from 'react'
-import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native'
-import { useNavigation } from '@react-navigation/native'
+import styled from 'styled-components/native'
 
-const Header = ({ showBackButton = true, title, onBackPress, onNextPress }) => {
-    
+const Header = ({ title, onBackPress, onNextPress }) => {
+
     return (
         <>
-            <SafeAreaView style={styles.safeAreaView} />
-            <View style={styles.container}>
-                <TouchableOpacity
-                    style={styles.buttons}
-                    onPress={onBackPress}
-                />
-                <Text style={styles.title}> {title} </Text>
-                <TouchableOpacity 
-                    style={styles.buttons} 
-                    onPress={onNextPress}
-                />
-            </View>
+            <StyledSafeAreaView />
+            <StyledContainer>
+                <Button onPress={onBackPress} />
+                <StyledText> {title} </StyledText>
+                <Button onPress={onNextPress} />
+            </StyledContainer>
         </>
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        width: '100%',
-        height: 48,
-        justifyContent: 'space-between',
-        paddingHorizontal: 8,
-        backgroundColor: 'blue',
-        alignItems: 'center',
-        flexDirection: 'row'
-    },
-    title: {
-        fontSize: 18,
-        color: 'white'
-    },
+const StyledSafeAreaView = styled.SafeAreaView`
+    background-color: blue;    
+`;
 
-    buttons: {
-        height: 24,
-        width: 24,
-        backgroundColor: 'brown'
-    },
-    safeAreaView: {
-        backgroundColor: 'blue',
-    }
-})
+const StyledContainer = styled.View`    
+    height: 48px;
+    justify-content: space-between;
+    padding-left: 8px;
+    padding-right: 8px;
+    background-color: blue;
+    align-items: center;
+    flex-direction: row;
+`;
+
+const Button = styled.TouchableOpacity`
+    height: 24px;
+    width: 24px;
+    background-color: gray;
+`;
+
+const StyledText = styled.Text`
+    font-size: 18px;
+    color: white;
+`;
 
 export default Header

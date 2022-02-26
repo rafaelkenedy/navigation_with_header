@@ -44,6 +44,7 @@ const Screen2 = () => {
       <Header
         onBackPress={() => goBack()}
         title="Segunda tela"
+        onNextPress={() => console.log("não é possível avançar")}
       />
       <View
         style={{
