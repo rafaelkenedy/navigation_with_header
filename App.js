@@ -10,6 +10,8 @@ import {
 import { NavigationContainer, useNavigation } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Header from './src/components/Header'
+import Input from './src/components/Input'
+import styled from 'styled-components/native'
 
 const Screen1 = () => {
   const { navigate, goBack } = useNavigation()
@@ -28,10 +30,14 @@ const Screen1 = () => {
       <View
         style={[
           styles.container,
-          { justifyContent: 'center', alignItems: 'center' }
+          { justifyContent: 'center', 
+            alignItems: 'center',
+            paddingHorizontal: 12
+          }
         ]}>
         <Text>Screen 1</Text>
-
+        <StyledTextInput label={"Email"} />
+        <StyledTextInput label={"Senha"} showRightIcon />
       </View>
     </>
   )
@@ -60,6 +66,10 @@ const Screen2 = () => {
 }
 
 const Stack = createNativeStackNavigator()
+
+const StyledTextInput = styled(Input)`
+  margin-top: 16px;
+`;
 
 const App = () => {
   return (
